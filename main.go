@@ -1,18 +1,29 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"strings"
 )
 
-func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("Usage: ./cron_parser \"cron_expression\"")
-		os.Exit(1)
-	}
+// Field ranges for cron expressions
+var (
+	minuteRange     = []int{0, 59}
+	hourRange       = []int{0, 23}
+	dayOfMonthRange = []int{1, 31}
+	monthRange      = []int{1, 12}
+	dayOfWeekRange  = []int{0, 6}
+)
 
-	cronExp := os.Args[1]
+func main() {
+
+	var cronExpFlag = flag.String("exp", "", "cronExpression")
+	flag.Parse()
+	cronExp := *cronExpFlag
+
+	fmt.Println("cron expression:: ", cronExp)
+
 	var fields = strings.Fields(cronExp)
 	if len(fields) < 6 || len(fields) > 6 {
 		fmt.Println("Invalid cron expression. Expected 5 time fields and a command.")
@@ -25,7 +36,7 @@ func main() {
 	dayOfMonth := fieldParser(fields[2], dayOfMonthRange)
 	month := fieldParser(fields[3], monthRange)
 	dayOfWeek := fieldParser(fields[4], dayOfWeekRange)
-	command := strings.Join(fields[6], " ")
+	command := fields[5] //expecting single word command
 
 	fmt.Printf("%-14s %v\n", "minute", minute)
 	fmt.Printf("%-14s %v\n", "hour", hour)

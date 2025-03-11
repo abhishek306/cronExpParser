@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// fieldParser decodes cron expression
+// FieldParser decodes cron expression
 func fieldParser(value string, fieldRange []int) []int {
 	var parsedField []int
 
