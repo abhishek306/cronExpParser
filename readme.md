@@ -34,3 +34,14 @@ It would be good to handle and test following cases:
 60 in minutes (out of range)
 13 in months (out of range)
 Missing fields in the input.
+
+## How to run the program?
+
+Execute following commands as per the requirement:
+
+1. To create build:  `go build`
+2. To run the program: `./cronParser --exp '* * * * * sampleCommand'`
+3. To run testcase: `go test`
+4. To build the code for linux machine, cmd: `env GOOS=linux GOARCH=arm go build` 
+
+Note: Test coverage for this assigment is 61% (command to verify `go test -cover`)

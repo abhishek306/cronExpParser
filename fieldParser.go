@@ -53,38 +53,3 @@ func fieldParser(value string, fieldRange []int) []int {
 
 	return parsedField
 }
-
-// parseField expands cron field expressions (*, */x, x-y, x,y,...)
-//func parseField(field string, fieldRange []int) []int {
-//	var result []int
-//
-//	if field == "*" {
-//		for i := fieldRange[0]; i <= fieldRange[1]; i++ {
-//			result = append(result, i)
-//		}
-//	} else if strings.Contains(field, "/") {
-//		parts := strings.Split(field, "/")
-//		step, _ := strconv.Atoi(parts[1])
-//		for i := fieldRange[0]; i <= fieldRange[1]; i += step {
-//			result = append(result, i)
-//		}
-//	} else if strings.Contains(field, "-") {
-//		parts := strings.Split(field, "-")
-//		start, _ := strconv.Atoi(parts[0])
-//		end, _ := strconv.Atoi(parts[1])
-//		for i := start; i <= end; i++ {
-//			result = append(result, i)
-//		}
-//	} else if strings.Contains(field, ",") {
-//		values := strings.Split(field, ",")
-//		for _, v := range values {
-//			val, _ := strconv.Atoi(v)
-//			result = append(result, val)
-//		}
-//	} else {
-//		val, _ := strconv.Atoi(field)
-//		result = append(result, val)
-//	}
-//
-//	return result
-//}
